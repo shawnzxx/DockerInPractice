@@ -36,7 +36,7 @@ namespace Compute.Application
             #endregion
 
             #region EntityFramework Core
-            var connection = Configuration.GetConnectionString("OperationDBConnection");
+            var connection = Configuration.GetConnectionString("ComputeDBConnection");
             services.AddDbContext<OperationDbContext>(optionsBuilder =>
             {
                 optionsBuilder
