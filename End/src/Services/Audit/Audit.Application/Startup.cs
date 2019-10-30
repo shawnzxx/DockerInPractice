@@ -81,6 +81,16 @@ namespace Audit.Application
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Audit API V1");
             });
             #endregion
+
+            //Apply migrations to database. Create database if it does not exist
+            //https://blog.rsuter.com/automatically-migrate-your-entity-framework-core-managed-database-on-asp-net-core-application-start/
+            using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
+            {
+                using (var context = serviceScope.ServiceProvider.GetRequiredService<RunningTotalDbContext>())
+                {
+                    context.Database.Migrate();
+                }
+            }
         }
     }
 }
