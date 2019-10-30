@@ -9,14 +9,6 @@
     }
   },
   "profiles": {
-    "IIS Express": {
-      "commandName": "IISExpress",
-      "launchBrowser": true,
-      "launchUrl": "swagger/index.html",
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      }
-    },
     "Audit.Application": {
       "commandName": "Project",
       "launchBrowser": true,
