@@ -17,11 +17,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Compute.Domain", "src\Servi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Compute.Infrastructure", "src\Services\Compute\Compute.Infrastructure\Compute.Infrastructure.csproj", "{3C2E6100-86AA-4BDA-8E65-4D17AA985707}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Audit.Infrastructure", "src\Services\Audit\Audit.Infrastructure\Audit.Infrastructure.csproj", "{5DFB8346-A7A2-4408-8BB7-22DAA7C51208}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Audit.Infrastructure", "src\Services\Audit\Audit.Infrastructure\Audit.Infrastructure.csproj", "{5DFB8346-A7A2-4408-8BB7-22DAA7C51208}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Audit.Domain", "src\Services\Audit\Audit.Domain\Audit.Domain.csproj", "{60C9682E-DFB4-4314-A0AB-3A03EA1532B1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Audit.Domain", "src\Services\Audit\Audit.Domain\Audit.Domain.csproj", "{60C9682E-DFB4-4314-A0AB-3A03EA1532B1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Audit.Application", "src\Services\Audit\Audit.Application\Audit.Application.csproj", "{1025F1BB-1471-48BB-9160-7E70B4F0DB13}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Audit.Application", "src\Services\Audit\Audit.Application\Audit.Application.csproj", "{1025F1BB-1471-48BB-9160-7E70B4F0DB13}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{5B7A3FD5-40B0-4503-B726-A424DF3D3698}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,6 +55,10 @@ Global
 		{1025F1BB-1471-48BB-9160-7E70B4F0DB13}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1025F1BB-1471-48BB-9160-7E70B4F0DB13}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1025F1BB-1471-48BB-9160-7E70B4F0DB13}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B7A3FD5-40B0-4503-B726-A424DF3D3698}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B7A3FD5-40B0-4503-B726-A424DF3D3698}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B7A3FD5-40B0-4503-B726-A424DF3D3698}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B7A3FD5-40B0-4503-B726-A424DF3D3698}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

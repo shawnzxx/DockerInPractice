@@ -1,0 +1,32 @@
+version: '3.4'
+
+services:
+  sql.data:
+    image: microsoft/mssql-server-linux:2017-latest
+    restart: on-failure
+    container_name: sql.data
+    hostname: sql.data
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=P@ssw0rd
+    volumes:
+      - C:\mssql_docker:/var/opt/mssql
+    ports:
+      - 1400:1433
+
+  audit.application:
+    image: ${DOCKER_REGISTRY-}auditapplication
+    build:
+      context: .
+      dockerfile: src/Services/Audit/Audit.Application/Dockerfile
+    depends_on:
+      - sql.data
+
+  compute.application:
+    image: ${DOCKER_REGISTRY-}computeapplication
+    build:
+      context: .
+      dockerfile: src/Services/Compute/Compute.Application/Dockerfile
+    depends_on:
+      - sql.data
+

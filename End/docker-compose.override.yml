@@ -1,0 +1,30 @@
+version: '3.4'
+
+services:
+  audit.application:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:443;http://+:80
+      - ASPNETCORE_HTTPS_PORT=44333
+      - ConnectionStrings__AuditDBConnection=Server=sql.data,1433;Initial Catalog=AuditDB;Persist Security Info=False;User ID=sa;Password=P@ssw0rd; MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=True;Connection Timeout=10;
+    ports:
+      - "56969:80"
+      - "44333:443"
+    volumes:
+      # You must run this command once:
+      # dotnet dev-certs https -ep %USERPROFILE%\.aspnet\https\aspnetapp.pfx -p crypticpassword
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+  compute.application:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:443;http://+:80
+      - ASPNETCORE_HTTPS_PORT=5001
+      - ConnectionStrings__ComputeDBConnection=Server=sql.data,1433;Initial Catalog=ComputeDB;Persist Security Info=False;User ID=sa;Password=P@ssw0rd;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=True;Connection Timeout=10;
+      - AuditServiceUri=http://audit.application:80
+    ports:
+      - "5000:80"
+      - "5001:443"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
