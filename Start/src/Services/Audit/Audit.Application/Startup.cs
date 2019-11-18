@@ -87,7 +87,7 @@ namespace Audit.Application
             using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
             {
                 using (var context = serviceScope.ServiceProvider.GetRequiredService<RunningTotalDbContext>()) {
-                    context.Database.Migrate();
+                    //context.Database.Migrate();
                 }  
             }
         }

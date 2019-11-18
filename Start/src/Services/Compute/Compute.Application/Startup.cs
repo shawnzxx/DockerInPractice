@@ -93,7 +93,7 @@ namespace Compute.Application
             {
                 using (var context = serviceScope.ServiceProvider.GetRequiredService<OperationDbContext>())
                 {
-                    context.Database.Migrate();
+                    //context.Database.Migrate();
                 }
             }
         }

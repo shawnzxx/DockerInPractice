@@ -4,15 +4,13 @@ services:
   audit.application:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_URLS=https://+:443;http://+:80
-      - ASPNETCORE_HTTPS_PORT=44333
+      - ASPNETCORE_URLS=http://+:80
       - ConnectionStrings__AuditDBConnection=Server=sql.data,1433;Initial Catalog=AuditDB;Persist Security Info=False;User ID=sa;Password=P@ssw0rd; MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=True;Connection Timeout=10;
     ports:
       - "56969:80"
-      - "44333:443"
     volumes:
       # You must run this command once:
-      # dotnet dev-certs https -ep %USERPROFILE%\.aspnet\https\aspnetapp.pfx -p crypticpassword
+      # dotnet dev-certs https -ep %APPDATA%\ASP.NET\https\Compute.Application.pfx -p test1234
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
   compute.application:
@@ -22,9 +20,13 @@ services:
       - ASPNETCORE_HTTPS_PORT=5001
       - ConnectionStrings__ComputeDBConnection=Server=sql.data,1433;Initial Catalog=ComputeDB;Persist Security Info=False;User ID=sa;Password=P@ssw0rd;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=True;Connection Timeout=10;
       - AuditServiceUri=http://audit.application:80
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=test1234
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/root/.aspnet/https/Compute.Application.pfx
     ports:
       - "5000:80"
       - "5001:443"
     volumes:
+      # You must run this command once:
+      # dotnet dev-certs https -ep %APPDATA%\ASP.NET\https\Compute.Application.pfx -p test1234
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro

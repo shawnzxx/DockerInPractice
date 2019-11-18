@@ -1,0 +1,15 @@
+# You must run this command once:
+# dotnet dev-certs https -ep %APPDATA%\ASP.NET\https\Compute.Application.pfx -p test1234
+	  
+dotnet dev-certs https --trust 
+
+dotnet dev-certs https --clean
+dotnet dev-certs https --check 
+
+
+- ASPNETCORE_Kestrel__Certificates__Default__Password=test1234
+- ASPNETCORE_Kestrel__Certificates__Default__Path=/root/.aspnet/https/Compute.Application.pfx
+
+
+docker run --rm -it -p 8080:80 -p 4433:443 -e ASPNETCORE_URLS="https://+;http://+" -e ASPNETCORE_HTTPS_PORT=4433 -e ASPNETCORE_Kestrel__Certificates__Default__Password="test1234" -e ASPNETCORE_Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx -v %USERPROFILE%\.aspnet\https:/https/ compute.application
+      
