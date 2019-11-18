@@ -55,11 +55,6 @@ namespace Compute.Application
             #region Register our own services
             services.AddHttpClient<IAuditService, AuditService>();
             #endregion
-
-            services.AddHttpsRedirection(options =>
-            {
-                options.HttpsPort = 443;
-            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -70,7 +65,7 @@ namespace Compute.Application
                 app.UseDeveloperExceptionPage();
             }
 
-            //app.UseHttpsRedirection();
+            app.UseHttpsRedirection();
 
             app.UseRouting();
 

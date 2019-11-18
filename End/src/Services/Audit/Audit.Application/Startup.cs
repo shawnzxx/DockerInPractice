@@ -86,10 +86,9 @@ namespace Audit.Application
             //https://blog.rsuter.com/automatically-migrate-your-entity-framework-core-managed-database-on-asp-net-core-application-start/
             using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
             {
-                using (var context = serviceScope.ServiceProvider.GetRequiredService<RunningTotalDbContext>())
-                {
+                using (var context = serviceScope.ServiceProvider.GetRequiredService<RunningTotalDbContext>()) {
                     context.Database.Migrate();
-                }
+                }  
             }
         }
     }

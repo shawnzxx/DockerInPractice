@@ -11,7 +11,6 @@ namespace Audit.Infrastructure
         //we add RunningTotalContext to the ASP.net Core IoC container with options, so that we can use it in Startup.cs
         public RunningTotalDbContext(DbContextOptions<RunningTotalDbContext> options) : base(options)
         {
-            //Database.Migrate();
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

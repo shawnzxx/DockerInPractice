@@ -12,7 +12,7 @@ namespace Compute.Infrastructure
         //we add OperationDbContext to the ASP.net Core IoC container with options, so that we can use it in Startup.cs
         public OperationDbContext(DbContextOptions<OperationDbContext> options) : base(options)
         {
-            //Database.Migrate();
+
         }
         public DbSet<Operation> Operations { get; set; }
 
